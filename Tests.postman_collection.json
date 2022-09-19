@@ -1,0 +1,215 @@
+{
+	"info": {
+		"_postman_id": "fab8670e-4dfa-4a9f-9220-c71f039231fe",
+		"name": "Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23060752"
+	},
+	"item": [
+		{
+			"name": "Child",
+			"item": [
+				{
+					"name": "New Request Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200); \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200\r",
+									"    , 202]);\r",
+									"});\r",
+									"\r",
+									" var jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var pageNo = pm.collectionVariables.get('pageNumber');\r",
+									"    console.log(parseInt(pageNo))\r",
+									"    pm.expect(jsonData.page).to.eql(parseInt(pageNo));\r",
+									"    pm.expect(jsonData.support.url).to.eql(\"https://reqres.in/#support-heading\");\r",
+									"     pm.expect(jsonData.data[0].id).to.eql(1);\r",
+									"\r",
+									"     pm.test(\"asas\", function(){\r",
+									"          pm.expect(jsonData.data[0].id).to.eql(111);\r",
+									"     })\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test('check id', function(){\r",
+									"    var len = jsonData.data.length;\r",
+									"    console.log(len)\r",
+									"\r",
+									"    for(var a=0; a<len; a++){\r",
+									"        console.log(jsonData.data[a].id)\r",
+									"        pm.collectionVariables.set('id'+[a], jsonData.data[a].id)\r",
+									"    }\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://reqres.in/api/users?page={{pageNumber}}",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "{{pageNumber}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200); \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200\r",
+							"    , 202]);\r",
+							"});\r",
+							"\r",
+							" var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var pageNo = pm.collectionVariables.get('pageNumber');\r",
+							"    console.log(parseInt(pageNo))\r",
+							"    pm.expect(jsonData.page).to.eql(parseInt(pageNo));\r",
+							"    pm.expect(jsonData.support.url).to.eql(\"https://reqres.in/#support-heading\");\r",
+							"     pm.expect(jsonData.data[0].id).to.eql(1);\r",
+							"\r",
+							"     pm.test(\"asas\", function(){\r",
+							"          pm.expect(jsonData.data[0].id).to.eql(111);\r",
+							"     })\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test('check id', function(){\r",
+							"    var len = jsonData.data.length;\r",
+							"    console.log(len)\r",
+							"\r",
+							"    for(var a=0; a<len; a++){\r",
+							"        console.log(jsonData.data[a].id)\r",
+							"        pm.collectionVariables.set('id'+[a], jsonData.data[a].id)\r",
+							"    }\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users?page={{pageNumber}}",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "{{pageNumber}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "pageNumber",
+			"value": "1",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "id0",
+			"value": ""
+		},
+		{
+			"key": "id1",
+			"value": ""
+		},
+		{
+			"key": "id2",
+			"value": ""
+		},
+		{
+			"key": "id3",
+			"value": ""
+		},
+		{
+			"key": "id4",
+			"value": ""
+		},
+		{
+			"key": "id5",
+			"value": ""
+		}
+	]
+}
